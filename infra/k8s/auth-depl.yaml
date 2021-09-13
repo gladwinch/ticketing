@@ -4,27 +4,27 @@ metadata:
   name: auth-depl
 spec: 
   replicas: 1
-  selector: 
-    matchLables:
+  selector:
+    matchLabels:
       app: auth
   template: 
     metadata:
-      labels: 
+      labels:
         app: auth
-      spec:
-        containers:
-          - name: auth
-            image: 8249/auth
+    spec: 
+      containers: 
+        - name: auth
+          image: 8249/auth
 ---
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: auth-srv
 spec: 
-  selector: 
+  selector:
     app: auth
   ports: 
     - name: auth
       protocol: TCP
-      post: 3000
-      targetPort: 3000
+      port: 4001
+      targetPort: 4001
